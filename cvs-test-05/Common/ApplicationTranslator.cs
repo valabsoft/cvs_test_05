@@ -118,6 +118,8 @@ namespace cvs_test_05.Common
             _EN.Add("LB_MM3", "(mm^3)");
             _RU.Add("LB_MM4", "(мм^4)");
             _EN.Add("LB_MM4", "(mm^4)");
+            _RU.Add("LB_MM_REPORT", "мм");
+            _EN.Add("LB_MM_REPORT", "mm");
 
             // Окно о программе
             _RU.Add("LB_VERSION", "Версия приложения:");

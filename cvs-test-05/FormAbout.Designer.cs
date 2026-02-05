@@ -30,21 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout));
             this.panelUP = new DevExpress.XtraEditors.PanelControl();
-            this.panelDown = new DevExpress.XtraEditors.PanelControl();
-            this.pictureLogo = new DevExpress.XtraEditors.PictureEdit();
-            this.buttonOK = new DevExpress.XtraEditors.SimpleButton();
-            this.labelTitle = new DevExpress.XtraEditors.LabelControl();
-            this.labelSupport = new DevExpress.XtraEditors.LabelControl();
-            this.linkLabelWWW = new System.Windows.Forms.LinkLabel();
-            this.labelCopyright = new DevExpress.XtraEditors.LabelControl();
-            this.labelForum = new DevExpress.XtraEditors.LabelControl();
-            this.labelVersion = new DevExpress.XtraEditors.LabelControl();
             this.labelTel = new DevExpress.XtraEditors.LabelControl();
+            this.labelVersion = new DevExpress.XtraEditors.LabelControl();
+            this.labelForum = new DevExpress.XtraEditors.LabelControl();
+            this.labelCopyright = new DevExpress.XtraEditors.LabelControl();
+            this.linkLabelWWW = new System.Windows.Forms.LinkLabel();
+            this.labelSupport = new DevExpress.XtraEditors.LabelControl();
+            this.labelTitle = new DevExpress.XtraEditors.LabelControl();
+            this.pictureLogo = new DevExpress.XtraEditors.PictureEdit();
+            this.panelDown = new DevExpress.XtraEditors.PanelControl();
+            this.buttonOK = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelUP)).BeginInit();
             this.panelUP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelDown)).BeginInit();
             this.panelDown.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelUP
@@ -65,36 +65,71 @@
             this.panelUP.Size = new System.Drawing.Size(438, 208);
             this.panelUP.TabIndex = 2;
             // 
-            // panelDown
+            // labelTel
             // 
-            this.panelDown.Controls.Add(this.buttonOK);
-            this.panelDown.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelDown.Location = new System.Drawing.Point(0, 208);
-            this.panelDown.Name = "panelDown";
-            this.panelDown.Size = new System.Drawing.Size(438, 60);
-            this.panelDown.TabIndex = 3;
+            this.labelTel.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTel.Appearance.Options.UseFont = true;
+            this.labelTel.Location = new System.Drawing.Point(93, 149);
+            this.labelTel.Name = "labelTel";
+            this.labelTel.Size = new System.Drawing.Size(113, 16);
+            this.labelTel.TabIndex = 11;
+            this.labelTel.Text = "+7 (812) 327-85-99";
             // 
-            // pictureLogo
+            // labelVersion
             // 
-            this.pictureLogo.EditValue = global::cvs_test_05.Properties.Resources.LogoCVS;
-            this.pictureLogo.Location = new System.Drawing.Point(12, 12);
-            this.pictureLogo.Name = "pictureLogo";
-            this.pictureLogo.Properties.InitialImageOptions.Image = global::cvs_test_05.Properties.Resources.LogoCVS;
-            this.pictureLogo.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureLogo.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureLogo.Size = new System.Drawing.Size(100, 96);
-            this.pictureLogo.TabIndex = 1;
+            this.labelVersion.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelVersion.Appearance.Options.UseFont = true;
+            this.labelVersion.Appearance.Options.UseTextOptions = true;
+            this.labelVersion.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelVersion.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Bottom;
+            this.labelVersion.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelVersion.Location = new System.Drawing.Point(118, 84);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(310, 24);
+            this.labelVersion.TabIndex = 10;
+            this.labelVersion.Text = "Версия приложения:";
             // 
-            // buttonOK
+            // labelForum
             // 
-            this.buttonOK.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonOK.Appearance.Options.UseFont = true;
-            this.buttonOK.Location = new System.Drawing.Point(144, 14);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(150, 32);
-            this.buttonOK.TabIndex = 2;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.labelForum.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelForum.Appearance.Options.UseFont = true;
+            this.labelForum.Location = new System.Drawing.Point(12, 171);
+            this.labelForum.Name = "labelForum";
+            this.labelForum.Size = new System.Drawing.Size(43, 16);
+            this.labelForum.TabIndex = 9;
+            this.labelForum.Text = "Форум:";
+            // 
+            // labelCopyright
+            // 
+            this.labelCopyright.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCopyright.Appearance.Options.UseFont = true;
+            this.labelCopyright.Location = new System.Drawing.Point(12, 127);
+            this.labelCopyright.Name = "labelCopyright";
+            this.labelCopyright.Size = new System.Drawing.Size(54, 16);
+            this.labelCopyright.TabIndex = 8;
+            this.labelCopyright.Text = "Copyright";
+            // 
+            // linkLabelWWW
+            // 
+            this.linkLabelWWW.AutoSize = true;
+            this.linkLabelWWW.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkLabelWWW.Location = new System.Drawing.Point(93, 171);
+            this.linkLabelWWW.Name = "linkLabelWWW";
+            this.linkLabelWWW.Size = new System.Drawing.Size(88, 16);
+            this.linkLabelWWW.TabIndex = 6;
+            this.linkLabelWWW.TabStop = true;
+            this.linkLabelWWW.Text = "www.dpipe.ru";
+            this.linkLabelWWW.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWWW_LinkClicked);
+            // 
+            // labelSupport
+            // 
+            this.labelSupport.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSupport.Appearance.Options.UseFont = true;
+            this.labelSupport.Location = new System.Drawing.Point(12, 149);
+            this.labelSupport.Name = "labelSupport";
+            this.labelSupport.Size = new System.Drawing.Size(71, 16);
+            this.labelSupport.TabIndex = 4;
+            this.labelSupport.Text = "Поддержка:";
             // 
             // labelTitle
             // 
@@ -111,71 +146,36 @@
             this.labelTitle.TabIndex = 2;
             this.labelTitle.Text = "Расчет характеристик сечения трубы";
             // 
-            // labelSupport
+            // pictureLogo
             // 
-            this.labelSupport.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSupport.Appearance.Options.UseFont = true;
-            this.labelSupport.Location = new System.Drawing.Point(12, 149);
-            this.labelSupport.Name = "labelSupport";
-            this.labelSupport.Size = new System.Drawing.Size(71, 16);
-            this.labelSupport.TabIndex = 4;
-            this.labelSupport.Text = "Поддержка:";
+            this.pictureLogo.EditValue = global::cvs_test_05.Properties.Resources.LogoCVS;
+            this.pictureLogo.Location = new System.Drawing.Point(12, 12);
+            this.pictureLogo.Name = "pictureLogo";
+            this.pictureLogo.Properties.InitialImageOptions.Image = global::cvs_test_05.Properties.Resources.LogoCVS;
+            this.pictureLogo.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureLogo.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.pictureLogo.Size = new System.Drawing.Size(100, 96);
+            this.pictureLogo.TabIndex = 1;
             // 
-            // linkLabelWWW
+            // panelDown
             // 
-            this.linkLabelWWW.AutoSize = true;
-            this.linkLabelWWW.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.linkLabelWWW.Location = new System.Drawing.Point(93, 171);
-            this.linkLabelWWW.Name = "linkLabelWWW";
-            this.linkLabelWWW.Size = new System.Drawing.Size(88, 16);
-            this.linkLabelWWW.TabIndex = 6;
-            this.linkLabelWWW.TabStop = true;
-            this.linkLabelWWW.Text = "www.dpipe.ru";
-            this.linkLabelWWW.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWWW_LinkClicked);
+            this.panelDown.Controls.Add(this.buttonOK);
+            this.panelDown.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelDown.Location = new System.Drawing.Point(0, 208);
+            this.panelDown.Name = "panelDown";
+            this.panelDown.Size = new System.Drawing.Size(438, 60);
+            this.panelDown.TabIndex = 3;
             // 
-            // labelCopyright
+            // buttonOK
             // 
-            this.labelCopyright.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCopyright.Appearance.Options.UseFont = true;
-            this.labelCopyright.Location = new System.Drawing.Point(12, 127);
-            this.labelCopyright.Name = "labelCopyright";
-            this.labelCopyright.Size = new System.Drawing.Size(54, 16);
-            this.labelCopyright.TabIndex = 8;
-            this.labelCopyright.Text = "Copyright";
-            // 
-            // labelForum
-            // 
-            this.labelForum.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelForum.Appearance.Options.UseFont = true;
-            this.labelForum.Location = new System.Drawing.Point(12, 171);
-            this.labelForum.Name = "labelForum";
-            this.labelForum.Size = new System.Drawing.Size(43, 16);
-            this.labelForum.TabIndex = 9;
-            this.labelForum.Text = "Форум:";
-            // 
-            // labelVersion
-            // 
-            this.labelVersion.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelVersion.Appearance.Options.UseFont = true;
-            this.labelVersion.Appearance.Options.UseTextOptions = true;
-            this.labelVersion.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelVersion.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Bottom;
-            this.labelVersion.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelVersion.Location = new System.Drawing.Point(144, 84);
-            this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(284, 24);
-            this.labelVersion.TabIndex = 10;
-            this.labelVersion.Text = "Версия приложения:";
-            // 
-            // labelTel
-            // 
-            this.labelTel.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTel.Appearance.Options.UseFont = true;
-            this.labelTel.Location = new System.Drawing.Point(93, 149);
-            this.labelTel.Name = "labelTel";
-            this.labelTel.Size = new System.Drawing.Size(113, 16);
-            this.labelTel.TabIndex = 11;
-            this.labelTel.Text = "+7 (812) 327-85-99";
+            this.buttonOK.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonOK.Appearance.Options.UseFont = true;
+            this.buttonOK.Location = new System.Drawing.Point(144, 14);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(150, 32);
+            this.buttonOK.TabIndex = 2;
+            this.buttonOK.Text = "OK";
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // FormAbout
             // 
@@ -195,9 +195,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelUP)).EndInit();
             this.panelUP.ResumeLayout(false);
             this.panelUP.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelDown)).EndInit();
             this.panelDown.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

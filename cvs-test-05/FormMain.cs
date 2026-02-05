@@ -1,7 +1,9 @@
 ﻿using cvs_test_05.Common;
 using cvs_test_05.Properties;
 using DevExpress.Data;
+using DevExpress.LookAndFeel.Design;
 using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -96,7 +99,11 @@ namespace cvs_test_05
 
             #region Перевод интерфейса
             // Заголовок окна
-            this.Text = _appTr.GetText("TITLE_MAIN");
+            // Получаем текущую сборку
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            AssemblyName assemblyName = assembly.GetName();
+            Version version = assemblyName.Version;
+            this.Text = $"{_appTr.GetText("TITLE_MAIN")} {version.Major}.{version.Minor}";
 
             // Обновляем рисунок с условными обозначениями
             switch (_appTr.GetLanguage())
@@ -174,7 +181,34 @@ namespace cvs_test_05
 
         private void buttonReport_Click(object sender, EventArgs e)
         {
-            ;
+            XtraReport report = new XtraReport();
+
+            report.pReportTitle.Value = _appTr.GetText("TITLE_MAIN");
+            
+            report.pOutDTitle.Value = _appTr.GetText("LB_OUTER_DIAMETER");
+            report.pInDTitle.Value = _appTr.GetText("LB_INNER_DIAMETER");
+            report.pTTitle.Value = _appTr.GetText("LB_PIPE_THICKNESS");
+
+            report.pSTitle.Value = _appTr.GetText("LB_PIPE_CROSS_AREA");
+            report.pJTitle.Value = _appTr.GetText("LB_MOMENT_INERTIA");
+            report.pWTitle.Value = _appTr.GetText("LB_MOMENT_RESISTANCE");
+
+            report.pOutDValue.Value = DoubleToStr(_pipeModel.OuterDiameter, _appSet.DecimalPlaces);
+            report.pInDValue.Value = DoubleToStr(_pipeModel.InnerDiameter, _appSet.DecimalPlaces);
+            report.pTValue.Value = DoubleToStr(_pipeModel.Thickness, _appSet.DecimalPlaces);
+
+            report.pSValue.Value = DoubleToStr(_pipeModel.Area, _appSet.DecimalPlaces);
+            report.pJValue.Value = DoubleToStr(_pipeModel.MomentInertia, _appSet.DecimalPlaces);
+            report.pWValue.Value = DoubleToStr(_pipeModel.MomentResistance, _appSet.DecimalPlaces);
+
+            report.pFirm.Value = _appTr.GetText("APP_FIRM");
+            report.pMM.Value = _appTr.GetText("LB_MM_REPORT");
+
+            report.RequestParameters = false;
+
+            ReportPrintTool reportPrintTool = new ReportPrintTool(report);
+            reportPrintTool.PreviewForm.StartPosition = FormStartPosition.CenterParent;
+            reportPrintTool.ShowPreviewDialog();
         }
 
         private void buttonSettings_Click(object sender, EventArgs e)
