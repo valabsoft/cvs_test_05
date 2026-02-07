@@ -36,7 +36,6 @@ namespace cvs_test_05
             _appSet.Save();
             #endregion
 
-
             DialogResult = DialogResult.OK;
         }
 
@@ -54,17 +53,17 @@ namespace cvs_test_05
 
                 #region Перевод интерфейса
 
-                ApplicationTranslator translator = new ApplicationTranslator();
-                translator.SetLanguage(_appSet.Language);
+                ApplicationTranslator _appTr = new ApplicationTranslator();
+                _appTr.SetLanguage(_appSet.Language);
 
-                this.Text = translator.GetText("TITLE_SETTINGS");
-                tabGeneral.Text = translator.GetText("TAB_GENERAL");
-                tabCalculation.Text = translator.GetText("TAB_CALC");
-                labelLanguage.Text = translator.GetText("LB_LANGUAGE");
-                buttonOK.Text = translator.GetText("BT_OK");
-                buttonCancel.Text = translator.GetText("BT_CANCEL");
-                labelCalculationMode.Text = translator.GetText("LB_CALC_MODE");
-                labelDecimalPlaces.Text = translator.GetText("LB_DECIMAL_PLACES");
+                this.Text = _appTr.GetText("TITLE_SETTINGS");
+                tabGeneral.Text = _appTr.GetText("TAB_GENERAL");
+                tabCalculation.Text = _appTr.GetText("TAB_CALC");
+                labelLanguage.Text = _appTr.GetText("LB_LANGUAGE");
+                buttonOK.Text = _appTr.GetText("BT_OK");
+                buttonCancel.Text = _appTr.GetText("BT_CANCEL");
+                labelCalculationMode.Text = _appTr.GetText("LB_CALC_MODE");
+                labelDecimalPlaces.Text = _appTr.GetText("LB_DECIMAL_PLACES");
 
                 #endregion
 
@@ -72,8 +71,7 @@ namespace cvs_test_05
                 cboxLanguage.SelectedIndex = (int)_appSet.Language;
                 
                 cboxCalculationMode.SelectedIndex = (int)_appSet.CalculationMode;
-                spinDecimalPlaces.Value = _appSet.DecimalPlaces;
-                
+                spinDecimalPlaces.Value = _appSet.DecimalPlaces;                
                 
             }
             catch (Exception)

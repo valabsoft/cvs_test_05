@@ -100,12 +100,12 @@ namespace cvs_test_05.Common
         {
             // Проверка значений параметров
             if (paramFirst <= 0)
-                return 1;
+                return 1; // Возвращаем код ошибки 1
             if (paramSecond <= 0)
-                return 2;
+                return 2; // Возвращаем код ошибки 2
             if (paramFirst <= paramSecond)
-                return 3;
-
+                return 3; // Возвращаем код ошибки 3
+            // Уставка параметров
             try
             {
                 switch (mode)
@@ -129,7 +129,7 @@ namespace cvs_test_05.Common
                         _InnerDiameter = _OuterDiameter - 2.0 * _Thickness;
                         break;
                 }
-
+                // Возвращаем признак удачного расчета
                 return 0;
             }
             catch
@@ -149,10 +149,13 @@ namespace cvs_test_05.Common
         {
             try
             {
+                // Площадь поперечного сечения
                 _Area = Math.PI * (Math.Pow(OuterDiameter, 2.0) - Math.Pow(InnerDiameter, 2.0)) / 4.0;
+                // Момент инерции
                 _MomentInertia = Math.PI * (Math.Pow(OuterDiameter, 4.0) - Math.Pow(InnerDiameter, 4.0)) / 64.0;
+                // Момент сопротивления
                 _MomentResistance = 2 * _MomentInertia / OuterDiameter;
-
+                // Возвращаем признак удачного расчета
                 return 0;
             }
             catch

@@ -4,6 +4,7 @@ using DevExpress.Data;
 using DevExpress.LookAndFeel.Design;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraSplashScreen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,9 +36,14 @@ namespace cvs_test_05
 
             try
             {
+                // Объект для работы с локализацией настроек
                 _appTr = new ApplicationTranslator();
-                _pipeModel = new PipeModel();
+
+                // Объект для работы с настройками приложения
                 _appSet = new ApplicationSettings();
+
+                // Объект для работы с расчетами модели
+                _pipeModel = new PipeModel();
             }
             catch (Exception ex)
             {
@@ -45,7 +51,7 @@ namespace cvs_test_05
             }
             
             // Спрятать основную форму для показа заставки
-            // this.Opacity = 1;
+            this.Opacity = 0;
         }
         /// <summary>
         /// Загрузка главного окна приложения
@@ -68,17 +74,22 @@ namespace cvs_test_05
             
             editS.Text = DoubleToStr(0.0, _appSet.DecimalPlaces);
             editJ.Text = DoubleToStr(0.0, _appSet.DecimalPlaces);
-            editW.Text = DoubleToStr(0.0, _appSet.DecimalPlaces); 
+            editW.Text = DoubleToStr(0.0, _appSet.DecimalPlaces);
             #endregion
 
+            #region Переводим интерфейс
             if (_appTr == null)
                 _appTr = new ApplicationTranslator();
             
             // Перевод интерфейса
             TranslateGUI(_appSet.Language);
+            #endregion
 
             // Установка фокуса
             buttonAbout.Select();
+            
+            // Закрываем окно приветствия            
+            SplashScreenManager.CloseForm(false);
         }
         /// <summary>
         /// Заглушка - имитация загрузки данных программы
@@ -158,59 +169,91 @@ namespace cvs_test_05
             buttonCalcalute.ToolTip = _appTr.GetText("TLT_CALC");
             #endregion
         }
-
-
+        /// <summary>
+        /// Обработчик показа формы (сброс служебного флага)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormMain_Shown(object sender, EventArgs e)
         {
             this.Opacity = 1;
         }
 
         #region Обработчики нажатий на кнопки        
-
+        /// <summary>
+        /// Обработчик нажатия на кнопку РАСЧЕТ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCalculate_Click(object sender, EventArgs e)
         {
             // Расчет характеристик
             PipeCalculation();
         }
-
+        /// <summary>
+        /// Обработчик нажатия на кнопку РАСЧЕТ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCalc_Click(object sender, EventArgs e)
         {
             // Расчет характеристик
             PipeCalculation();
         }
-
+        /// <summary>
+        /// Обработчик нажатия на кнопку ОТЧЕТ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonReport_Click(object sender, EventArgs e)
         {
-            XtraReport report = new XtraReport();
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+                // Создаем объект отчета
+                XtraReport report = new XtraReport();
 
-            report.pReportTitle.Value = _appTr.GetText("TITLE_MAIN");
-            
-            report.pOutDTitle.Value = _appTr.GetText("LB_OUTER_DIAMETER");
-            report.pInDTitle.Value = _appTr.GetText("LB_INNER_DIAMETER");
-            report.pTTitle.Value = _appTr.GetText("LB_PIPE_THICKNESS");
+                // Формируем набор параметров для генерации отчета
+                report.pReportTitle.Value = _appTr.GetText("TITLE_MAIN");
 
-            report.pSTitle.Value = _appTr.GetText("LB_PIPE_CROSS_AREA");
-            report.pJTitle.Value = _appTr.GetText("LB_MOMENT_INERTIA");
-            report.pWTitle.Value = _appTr.GetText("LB_MOMENT_RESISTANCE");
+                report.pOutDTitle.Value = _appTr.GetText("LB_OUTER_DIAMETER");
+                report.pInDTitle.Value = _appTr.GetText("LB_INNER_DIAMETER");
+                report.pTTitle.Value = _appTr.GetText("LB_PIPE_THICKNESS");
 
-            report.pOutDValue.Value = DoubleToStr(_pipeModel.OuterDiameter, _appSet.DecimalPlaces);
-            report.pInDValue.Value = DoubleToStr(_pipeModel.InnerDiameter, _appSet.DecimalPlaces);
-            report.pTValue.Value = DoubleToStr(_pipeModel.Thickness, _appSet.DecimalPlaces);
+                report.pSTitle.Value = _appTr.GetText("LB_PIPE_CROSS_AREA");
+                report.pJTitle.Value = _appTr.GetText("LB_MOMENT_INERTIA");
+                report.pWTitle.Value = _appTr.GetText("LB_MOMENT_RESISTANCE");
 
-            report.pSValue.Value = DoubleToStr(_pipeModel.Area, _appSet.DecimalPlaces);
-            report.pJValue.Value = DoubleToStr(_pipeModel.MomentInertia, _appSet.DecimalPlaces);
-            report.pWValue.Value = DoubleToStr(_pipeModel.MomentResistance, _appSet.DecimalPlaces);
+                report.pOutDValue.Value = DoubleToStr(_pipeModel.OuterDiameter, _appSet.DecimalPlaces);
+                report.pInDValue.Value = DoubleToStr(_pipeModel.InnerDiameter, _appSet.DecimalPlaces);
+                report.pTValue.Value = DoubleToStr(_pipeModel.Thickness, _appSet.DecimalPlaces);
 
-            report.pFirm.Value = _appTr.GetText("APP_FIRM");
-            report.pMM.Value = _appTr.GetText("LB_MM_REPORT");
+                report.pSValue.Value = DoubleToStr(_pipeModel.Area, _appSet.DecimalPlaces);
+                report.pJValue.Value = DoubleToStr(_pipeModel.MomentInertia, _appSet.DecimalPlaces);
+                report.pWValue.Value = DoubleToStr(_pipeModel.MomentResistance, _appSet.DecimalPlaces);
 
-            report.RequestParameters = false;
+                report.pFirm.Value = _appTr.GetText("APP_FIRM");
+                report.pMM.Value = _appTr.GetText("LB_MM_REPORT");
+                
+                // Предотвращаем показ служебного окна с параметрами
+                report.RequestParameters = false;
 
-            ReportPrintTool reportPrintTool = new ReportPrintTool(report);
-            reportPrintTool.PreviewForm.StartPosition = FormStartPosition.CenterParent;
-            reportPrintTool.ShowPreviewDialog();
+                // Подготавливаем окно для показа превью отчета
+                ReportPrintTool reportPrintTool = new ReportPrintTool(report);
+                reportPrintTool.PreviewForm.StartPosition = FormStartPosition.CenterParent;
+                reportPrintTool.ShowPreviewDialog();
+            }
+            catch
+            {
+                // TODO: Добавить диагоностический лог
+            }            
+            Cursor.Current = Cursors.Default;
         }
-
+        /// <summary>
+        /// Обработчик нажатия на кнопку НАСТРОЙКИ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSettings_Click(object sender, EventArgs e)
         {
             using (FormSettings formSettings = new FormSettings())
@@ -244,21 +287,29 @@ namespace cvs_test_05
                         double W = StrToDouble(editW.Text);
 
                         editOutD.Text = DoubleToStr(OutD, _appSet.DecimalPlaces);
-                        editInD.Text = DoubleToStr(InD, _appSet.DecimalPlaces).ToString();
+                        editInD.Text = DoubleToStr(InD, _appSet.DecimalPlaces);
 
-                        editS.Text = DoubleToStr(S, _appSet.DecimalPlaces).ToString();
-                        editJ.Text = DoubleToStr(J, _appSet.DecimalPlaces).ToString();
-                        editW.Text = DoubleToStr(W, _appSet.DecimalPlaces).ToString();
+                        editS.Text = DoubleToStr(S, _appSet.DecimalPlaces);
+                        editJ.Text = DoubleToStr(J, _appSet.DecimalPlaces);
+                        editW.Text = DoubleToStr(W, _appSet.DecimalPlaces);
                     }
                 }
             }
         }
-
+        /// <summary>
+        /// Обработчик нажатия на кнопку ВЫХОД
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Close();
         }
-
+        /// <summary>
+        /// Обработчик нажатия на кнопку О ПРОГРАММЕ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAbout_Click(object sender, EventArgs e)
         {
             using (FormAbout formAbout = new FormAbout())
@@ -268,7 +319,11 @@ namespace cvs_test_05
         }
 
         #endregion
-
+        /// <summary>
+        /// Обработчик закрытия главного окна приложения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (XtraMessageBox.Show(
@@ -280,9 +335,14 @@ namespace cvs_test_05
                 e.Cancel = true;
             }
         }
-
+        /// <summary>
+        /// Обработчик события - Смена режима вычислений
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cboxCalculationMode_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // В зависимости от выбора пользователя меняем текст на лейбле второго параметра
             switch (cboxCalculationMode.SelectedIndex)
             {
                 case 0:
@@ -296,7 +356,9 @@ namespace cvs_test_05
                     break;
             }
         }
-
+        /// <summary>
+        /// Основная функция расчета параметров сечения трубы
+        /// </summary>
         private void PipeCalculation()
         {
             // Чтение параметров
@@ -307,9 +369,9 @@ namespace cvs_test_05
             editOutD.Text = DoubleToStr(OutD, _appSet.DecimalPlaces);
             editInD.Text = DoubleToStr(InD, _appSet.DecimalPlaces);
 
+            // Режим по умолчанию
             CalculationMode mode = CalculationMode.DS;
-
-
+            // Читаем активный режим и выполняем расчет
             if (_pipeModel != null)
             {
                 // Уставка параметров
@@ -322,12 +384,12 @@ namespace cvs_test_05
                         mode = CalculationMode.DD;
                         break;
                 }
-
+                // Передаем параметры в модель для расчетов
                 int res = _pipeModel.SetCalculationParameters(OutD, InD, mode);
-                editS.Text = DoubleToStr(0.00, _appSet.DecimalPlaces).ToString();
-                editJ.Text = DoubleToStr(0.00, _appSet.DecimalPlaces).ToString();
-                editW.Text = DoubleToStr(0.00, _appSet.DecimalPlaces).ToString();
-
+                editS.Text = DoubleToStr(0.00, _appSet.DecimalPlaces);
+                editJ.Text = DoubleToStr(0.00, _appSet.DecimalPlaces);
+                editW.Text = DoubleToStr(0.00, _appSet.DecimalPlaces);
+                // Анализ результатов расчета, при возникновении ошибки - выводим соответствующее предупреждение
                 switch (res)
                 {
                     // -1 - Признак возникновения исключительной ситуации
@@ -375,7 +437,12 @@ namespace cvs_test_05
                 }
             }
         }
-
+        /// <summary>
+        /// Служебная функция для перевода вещественного числа в строку
+        /// </summary>
+        /// <param name="value">Число для перевода</param>
+        /// <param name="decimalplaces">Количество десятичных знаков после запятой</param>
+        /// <returns>Преобразованная строка</returns>
         private String DoubleToStr(double value, decimal decimalplaces)
         {
             switch (decimalplaces)
@@ -395,13 +462,20 @@ namespace cvs_test_05
 
             }
         }
-
+        /// <summary>
+        /// Служебная функция для перевода строки в число
+        /// </summary>
+        /// <param name="value">Строка для перевода</param>
+        /// <returns>Результат преобразования</returns>
         private Double StrToDouble(string value)
         {
             try
             {
+                // В зависимости от региональных настроек пользователя определяем десятичный разделитель.
                 string decimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                // Корректируем разделитель в зависимости от ввода пользователя
                 value = value.Replace(".", decimalSeparator).Replace(",", decimalSeparator);
+                // Выполняем преобразование
                 double result = Convert.ToDouble(value);
                 return result;
             }

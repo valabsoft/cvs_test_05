@@ -31,12 +31,14 @@ namespace cvs_test_05.Common
         // Имя файла с настройками приложения
         private string _settingsFile;
 
+        // Язык интерфейса
         [XmlElement("Language")]
         public Language Language { get; set; }
        
+        // Режим расчетов (по внутреннему диаметру или толщине стенки трубы)
         [XmlElement("CalculationMode")]
         public CalculationMode CalculationMode { get; set; }
-
+        // Количество десятичных знаков после запятой
         [XmlElement("DecimalPlaces")]
         public decimal DecimalPlaces { get; set; }
         
@@ -45,7 +47,7 @@ namespace cvs_test_05.Common
         {
             // По умолчанию файл с настройками лежит в папке приложения
             _settingsFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "cvs-test-05.dat");
-
+            // Значения по умолчанию
             Language = Language.RU;
             CalculationMode = CalculationMode.DS;
             DecimalPlaces = 1;
@@ -56,6 +58,7 @@ namespace cvs_test_05.Common
         /// </summary>
         public void Load()
         {
+            // Проверка на существование файла, чтение файла и десериализация XML-строки
             if (File.Exists(_settingsFile))
             {
                 try
@@ -71,6 +74,7 @@ namespace cvs_test_05.Common
         /// </summary>
         public void Save()
         {
+            // Сериализация строки и запись в файл
             try
             {
                 String serializedString = this.SerializeToString();

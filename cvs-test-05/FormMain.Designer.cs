@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::cvs_test_05.FormSplashScreen), false, false);
+            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::cvs_test_05.FormSplashScreen), true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panelUp = new DevExpress.XtraEditors.PanelControl();
             this.buttonAbout = new DevExpress.XtraEditors.SimpleButton();
@@ -393,7 +393,7 @@
             this.buttonSettings.Appearance.Options.UseFont = true;
             this.buttonSettings.Location = new System.Drawing.Point(374, 14);
             this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Size = new System.Drawing.Size(154, 34);
+            this.buttonSettings.Size = new System.Drawing.Size(177, 34);
             this.buttonSettings.TabIndex = 7;
             this.buttonSettings.Text = "НАСТРОЙКИ";
             this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
@@ -403,9 +403,9 @@
             this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonExit.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonExit.Appearance.Options.UseFont = true;
-            this.buttonExit.Location = new System.Drawing.Point(554, 14);
+            this.buttonExit.Location = new System.Drawing.Point(563, 14);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(120, 34);
+            this.buttonExit.Size = new System.Drawing.Size(111, 34);
             this.buttonExit.TabIndex = 8;
             this.buttonExit.Text = "ВЫХОД";
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);

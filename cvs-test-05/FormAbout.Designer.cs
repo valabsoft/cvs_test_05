@@ -83,7 +83,7 @@
             this.labelVersion.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelVersion.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Bottom;
             this.labelVersion.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelVersion.Location = new System.Drawing.Point(118, 84);
+            this.labelVersion.Location = new System.Drawing.Point(118, 88);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(310, 24);
             this.labelVersion.TabIndex = 10;
@@ -154,7 +154,7 @@
             this.pictureLogo.Properties.InitialImageOptions.Image = global::cvs_test_05.Properties.Resources.LogoCVS;
             this.pictureLogo.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureLogo.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureLogo.Size = new System.Drawing.Size(100, 96);
+            this.pictureLogo.Size = new System.Drawing.Size(100, 100);
             this.pictureLogo.TabIndex = 1;
             // 
             // panelDown

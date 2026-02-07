@@ -36,8 +36,8 @@ namespace cvs_test_05
 
             Application.Run(formMain);
 
-            // Закрытие сплеш-формы
-            SplashScreenManager.CloseForm();
+            // Закрытие сплеш-формы (перенесено в OnMainFormLoad)
+            // SplashScreenManager.CloseForm();
         }
     }
 }

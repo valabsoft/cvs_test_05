@@ -21,19 +21,21 @@ namespace cvs_test_05
             labelTitle.Dock = DockStyle.Fill;
             labelTitle.BringToFront();
 
+            pictureEditImage.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+
             ApplicationSettings _appSet = new ApplicationSettings();
             _appSet.Load();
 
-            ApplicationTranslator translator = new ApplicationTranslator();
-            translator.SetLanguage(_appSet.Language);
+            ApplicationTranslator _appTr = new ApplicationTranslator();
+            _appTr.SetLanguage(_appSet.Language);
 
-            labelTitle.Text = translator.GetText("TITLE_MAIN");
-            labelStatus.Text = translator.GetText("LB_STARTED");            
+            labelTitle.Text = _appTr.GetText("TITLE_MAIN");
+            labelStatus.Text = _appTr.GetText("LB_STARTED");            
 
             if (DateTime.Now.Year == 2026)
-                this.labelCopyright.Text = $"Copyright © {DateTime.Now.Year.ToString()} {translator.GetText("APP_FIRM")}";
+                this.labelCopyright.Text = $"Copyright © {DateTime.Now.Year.ToString()} {_appTr.GetText("APP_FIRM")}";
             else
-                this.labelCopyright.Text = $"Copyright © 2026-{DateTime.Now.Year.ToString()} {translator.GetText("APP_FIRM")}";
+                this.labelCopyright.Text = $"Copyright © 2026-{DateTime.Now.Year.ToString()} {_appTr.GetText("APP_FIRM")}";
         }
 
         #region Overrides
